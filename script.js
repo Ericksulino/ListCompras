@@ -12,7 +12,7 @@ document.querySelector('input[type=submit]')
     });
     let listaProd = document.querySelector('.lista-produtos');
     listaProd.innerHTML = "";
-    let soma = 0;
+    var soma = 0;
     items.map((val) =>{
         soma+=parseFloat(val.valor);
         listaProd.innerHTML+= `
@@ -25,5 +25,13 @@ document.querySelector('input[type=submit]')
     soma = soma.toFixed(2)
     nomeProd.value = "";
     precoProd.value = "";
-    elemSoma.innerHTML = 'R$'+soma;
-})
+    elemSoma.innerHTML = 'Total: R$'+soma;
+});
+
+document.querySelector('button[name=Limpar]')
+.addEventListener('click',() =>{
+    items = [];
+    soma = 0;
+    document.querySelector('.lista-produtos').innerHTML = "";
+    document.querySelector('.soma-produto h1').innerHTML = 'Total: R$0,00'
+});
